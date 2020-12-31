@@ -70,8 +70,6 @@ class View
     private function generateFileSimple($file){
         if (file_exists($file)) {
     
-    
-    
           require $file;
     
         }

@@ -7,7 +7,7 @@ abstract class Model
     //connexion à la bdd
 
     private static function setBdd(){
-        self::$_bdd = new PDO('mysql:host=localhost;dbname=blogperso;charset=utf8', 'root', '');
+        self::$_bdd = new PDO('mysql:host=localhost;dbname=monblogperso;charset=utf8', 'root', '');
     
         //on utilise les constantes de PDO pour gérer les erreurs
         self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
@@ -82,6 +82,9 @@ abstract class Model
           var_dump($table);
           var_dump($req);
           var_dump($id);
+
+        $req->closeCursor();
+
 
     }
 
