@@ -18,4 +18,8 @@ class ArticleManager extends Model
     public function createArticle(){
         return $this->createOne('articles', 'Article');
     }
+
+    public function deleteArticle($id){
+        return $this->deleteOne('articles', 'Article',$id);
+    }
 }

@@ -59,7 +59,8 @@ foreach ($articles as $article) {
                                 <td class="logoImage"><?php echo $article->date() ?></td>
 
 
-                                 <td><a href="post&id=<?php echo $article->id() ?>"> Voir l'article  </a><!-- <a class="btn btn-danger" href="edit.php?id=<?php echo $brands['brand_id'] ?>">Modifier</a> <a class="btn btn-danger" href="delete.php?id=<?php echo $brands['brand_id'] ?>">Supprimer</a></td>  -->
+                                 <td><a href="post&id=<?php echo $article->id() ?>"> Voir l'article  </a><!-- <a class="btn btn-danger" href="edit.php?id=<?php echo $brands['brand_id'] ?>">Modifier</a>-->
+                                 <a href="post&delete&id=<?php echo $article->id() ?>"> supprimer l'article  </a>  
                             </tr>
                         <?php
                         }

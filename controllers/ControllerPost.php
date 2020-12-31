@@ -16,6 +16,8 @@ class ControllerPost
             $this->create();
         }elseif(isset($_GET['status']) && isset($_GET['status'])=="new"){
             $this->store();
+        }elseif(isset($_GET['delete'])){
+            $this->delete();
         }
         
         else{
@@ -52,8 +54,8 @@ class ControllerPost
     }
 
 
-      //fonction pour insérer un aticle
-    //en bdd
+      //fonction pour insérer un aticle dans la bdd
+       
     private function store()
     {
       $this->_articleManager = new ArticleManager;
@@ -61,5 +63,21 @@ class ControllerPost
       $articles = $this->_articleManager->getArticles();
       $this->_view = new View('Accueil');
       $this->_view->generate(array('articles' => $articles));
+    }
+
+    //fonction pour supprimer un article
+
+    private function delete()
+    {
+
+        $this->_articleManager = new ArticleManager();
+        $article = $this->_articleManager->deleteArticle($_GET['id']);
+        
+        if(isset($_GET['delete'])){
+            $this->view = new View ('DeletePost');
+            // $this->_view->generateFileSimple();
+            var_dump($this->view);
+
+        }
     }
 }

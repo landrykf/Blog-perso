@@ -1,5 +1,5 @@
 <?php
-abstract class model
+abstract class Model
 {
 
     private static $_bdd;
@@ -72,5 +72,17 @@ abstract class model
         var_dump(date("d.m.Y"));
       }
 
-    
+
+      protected function deleteOne($table, $obj,$id)
+      {
+          $this->getBdd();
+          $req = self::$_bdd->prepare("DELETE FROM ".$table. " WHERE id = ".$id);
+          $req->execute(array($id));
+
+          var_dump($table);
+          var_dump($req);
+          var_dump($id);
+
+    }
+
 }
