@@ -37,8 +37,8 @@ class Router
                 }else{
                     throw new \Exception("page introuvable", 1);
                 }
-            }
-            else {
+            } 
+                 else {
                 require_once ('controllers/ControllerAccueil.php');
                 $this->ctrl = new ControllerAccueil($url);
             }
@@ -46,6 +46,7 @@ class Router
         } catch (\Exception $e) {
             $errorMsg = $e->getMessage();
             var_dump($errorMsg);
+            var_dump($controllerFile);
             $this->_view = new View('Error');
             $this->_view->generate(array('errorMsg' => $errorMsg));
         }
