@@ -6,6 +6,8 @@ class Article
     private $_title;
     private $_content;
     private $_date;
+    private $_categorieId;
+    private $_editorId;
 
     public function __construct(array $data)
     {
@@ -13,7 +15,7 @@ class Article
     }
 
         //hdratation
-        
+
   public function hydrate(array $data){
     foreach ($data as $key => $value) {
       $method = 'set'.ucfirst($key);
@@ -48,7 +50,25 @@ class Article
 
         public function setDate($date)
         {
+
             $this->_date = $date;
+        }
+
+
+        public function setCategorieId($categorieId)
+        {
+            $categorieId = (int) $categorieId;
+            if($categorieId > 0) {
+                $this->_categorieId = $categorieId;
+            }
+        }
+
+        public function setEditorId($editorId)
+        {
+            $editorId = (int) $editorId;
+            if($editorId > 0) {
+                $this->_editorId = $editorId;
+            }
         }
 
 
@@ -74,5 +94,14 @@ class Article
             return $this->_date;
         }
 
+        public function categorieId()
+        {
+            return $this->_categorieId;
+        }
+
+        public function editorId()
+        {
+            return $this->_editorId;
+        }
 
 }

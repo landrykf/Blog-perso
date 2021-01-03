@@ -11,6 +11,22 @@ class ArticleManager extends Model
         return $this->getAll('articles','Article');
     }
 
+    //récupérer les categorie dans la bdd
+
+    public function getCategories(){
+
+        return $this->getAll('categories','Categorie');
+    }
+
+    //récupérer les editeurs dans la bdd
+
+    public function getEditors(){
+
+        return $this->getAll('editors','Editor');
+    }
+
+    
+
     public function getArticle($id){
         return $this->getOne('articles', 'Article', $id);
     }

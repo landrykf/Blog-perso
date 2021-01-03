@@ -1,9 +1,9 @@
 <?php
 
 
-class ControllerPost
+class ControllerImg
 {
-    private  $_articleManager;
+    private  $_imageManager;
     private $_view;
 
 
@@ -21,19 +21,19 @@ class ControllerPost
         }
         
         else{
-            $this->article();
+            $this->image();
         }
     }
 
     //Fonction pour afficher un article
-    private function article(){
+    private function image(){
         if(isset($_GET['id'])){
             
-            $this->_articleManager = new ArticleManager();
-            $article = $this->_articleManager->getArticles($_GET['id']);
+            $this->_imageManager = new ImageManager();
+            $image = $this->_imageManager->getImage($_GET['id']);
     
             $this->_view = new View('SinglePost');
-            $this->_view->generate(array('article' => $article));
+            $this->_view->generate(array('image' => $image));
         }
 
 
@@ -46,7 +46,7 @@ class ControllerPost
             
             
     
-            $this->_view = new View('CreatePost');
+            $this->_view = new View('CreateImage');
             $this->_view->generateForm();
         }
 
@@ -58,12 +58,11 @@ class ControllerPost
        
     private function store()
     {
-      $this->_articleManager = new ArticleManager;
-      $article = $this->_articleManager->createArticle();
-      $articles = $this->_articleManager->getArticles();
-      var_dump($articles);
-      $this->_view = new View('Accueil');
-      $this->_view->generate(array('articles' => $articles));
+      $this->_imageManager = new ImageManager;
+      $image = $this->_imageManager->createImage();
+      $images = $this->_imageManager->getImages();
+      $this->_view = new View('Image');
+      $this->_view->generate(array('Image' => $images));
     }
 
     //fonction pour supprimer un article
@@ -71,11 +70,11 @@ class ControllerPost
     private function delete()
     {
 
-        $this->_articleManager = new ArticleManager();
-        $article = $this->_articleManager->deleteArticle($_GET['id']);
+        $this->_imageManager = new ImageManager();
+        $image = $this->_imageManager->deleteImage($_GET['id']);
         
         if(isset($_GET['delete'])){
-            $this->view = new View ('DeletePost');
+            $this->view = new View ('DeleteImg');
             // $this->_view->generateFileSimple();
             var_dump($this->view);
 

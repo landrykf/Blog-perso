@@ -26,26 +26,19 @@ foreach ($articles as $article) {
         <div class="row">
             <section class="col-12">
                 <table class="table">
-                    <?php
-                    if (!empty($_SESSION['erreur'])) {
-                        echo '<div class ="alert alert-danger" role= "alert">' . $_SESSION['erreur'] . '
-                            </div>';
-                        $_SESSION['erreur'] = '';
-                    }
-                    ?>
-                    <?php
-                    if (!empty($_SESSION['message'])) {
-                        echo '<div class ="alert alert-success" role= "alert">' . $_SESSION['message'] . '
-                            </div>';
-                        $_SESSION['message'] = '';
-                    }
-                    ?> -->
+ 
+
+                <a href="categorie" class="btn btn-success">gestion des Catégories</a> 
+                <a href="image" class="btn btn-success">gestion des Images</a>
                     <h1>Liste des Articles</h1>
                     <thead>
                         <th>ID</th>
                         <th>Titre</th>
                         <th>Contenu</th>
                         <th>Date</th>
+                        <th>categorie</th>
+                        <th>editeur</th>
+                        <th>action</th>
                     </thead>
                     <tbody>
                         <?php
@@ -53,11 +46,12 @@ foreach ($articles as $article) {
                         foreach ($articles as $article) {
                         ?>
                             <tr>
-                                <td><?php echo $article->id() ?></td>
+                                <td><?php echo $article->id(); ?></td>
                                 <td><?php echo $article->title()  ?></td>
                                 <td><?php echo $article->content() ?></td>
-                                <td class="logoImage"><?php echo $article->date() ?></td>
-
+                                <td><?php echo $article->date() ?></td>
+                                <td><?php echo $article->categorieId() ?></td>
+                                <td><?php echo $article->editorId() ?></td>
 
                                  <td><a href="post&id=<?php echo $article->id() ?>"> Voir l'article  </a><!-- <a class="btn btn-danger" href="edit.php?id=<?php echo $brands['brand_id'] ?>">Modifier</a>-->
                                  <a href="post&delete&id=<?php echo $article->id() ?>"> supprimer l'article  </a>  
@@ -69,6 +63,7 @@ foreach ($articles as $article) {
                     </tbody>
                 </table>
                 <a href="post&create" class="btn btn-success">Creer un nouvelle Article</a>
+
             </section>
         </div>
     </main>

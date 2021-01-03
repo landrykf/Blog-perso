@@ -86,6 +86,34 @@ abstract class Model
         var_dump($req);
     }
 
+    protected function createOneImage($table, $obj)
+    {
+        $this->getBdd();
+        $name = $_POST['name'];
+        $link = $_POST['link'];
+        $req = self::$_bdd->prepare("INSERT INTO " . $table . " (name,link) VALUES ('$name','$link')");
+
+        $req->execute();
+
+        $req->closeCursor();
+
+        var_dump($req);
+    }
+
+    protected function createOneEditor($table, $obj)
+    {
+        $this->getBdd();
+        $name = $_POST['name'];
+        $password = $_POST['password'];
+        $req = self::$_bdd->prepare("INSERT INTO " . $table . " (name,password) VALUES ('$name','$password')");
+
+        $req->execute();
+
+        $req->closeCursor();
+
+        var_dump($req);
+    }
+
 
     protected function deleteOne($table, $obj, $id)
     {

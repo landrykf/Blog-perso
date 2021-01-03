@@ -1,9 +1,9 @@
 <?php
 
 
-class ControllerPost
+class ControllerEdit
 {
-    private  $_articleManager;
+    private  $_editorManager;
     private $_view;
 
 
@@ -21,19 +21,19 @@ class ControllerPost
         }
         
         else{
-            $this->article();
+            $this->editor();
         }
     }
 
     //Fonction pour afficher un article
-    private function article(){
+    private function editor(){
         if(isset($_GET['id'])){
             
-            $this->_articleManager = new ArticleManager();
-            $article = $this->_articleManager->getArticles($_GET['id']);
+            $this->_editorManager = new EditorManager();
+            $editor = $this->_editorManager->getEditor($_GET['id']);
     
             $this->_view = new View('SinglePost');
-            $this->_view->generate(array('article' => $article));
+            $this->_view->generate(array('editor' => $editor));
         }
 
 
@@ -46,7 +46,7 @@ class ControllerPost
             
             
     
-            $this->_view = new View('CreatePost');
+            $this->_view = new View('CreateEditor');
             $this->_view->generateForm();
         }
 
@@ -54,25 +54,27 @@ class ControllerPost
     }
 
 
-      //fonction pour insérer un aticle dans la bdd
+      //fonction pour insérer un editeur dans la bdd
        
     private function store()
     {
-      $this->_articleManager = new ArticleManager;
-      $article = $this->_articleManager->createArticle();
-      $articles = $this->_articleManager->getArticles();
-      var_dump($articles);
-      $this->_view = new View('Accueil');
-      $this->_view->generate(array('articles' => $articles));
+      $this->_editorManager = new EditorManager;
+      $editor = $this->_editorManager->createEditor();
+      $editors = $this->_editorManager->getEditors();
+      $this->_view = new View('Editor');
+      $this->_view->generate(array('editors' => $editors));
+      var_dump($editors);
     }
+
+
 
     //fonction pour supprimer un article
 
     private function delete()
     {
 
-        $this->_articleManager = new ArticleManager();
-        $article = $this->_articleManager->deleteArticle($_GET['id']);
+        $this->_editorManager = new EditorManager();
+        $editor = $this->_editorManager->deleteEditor($_GET['id']);
         
         if(isset($_GET['delete'])){
             $this->view = new View ('DeletePost');
