@@ -49,8 +49,19 @@ class Editor
         public function setRole($role)
         {
             if (is_string($role)) {
-                $this->_role = $role;
+                $this->_role = json_decode($role) ;
             }
+        }
+
+        //crée la session de l'utilistateur
+
+        public function setSession()
+        {
+            $_SESSION['user']=[
+                'id' => $this->_id,
+                'email' => $this->_email,
+                'role' => $this->_role
+            ];
         }
 
 
@@ -74,9 +85,13 @@ class Editor
         }
 
         
-        public function role()
+        public function role():array 
         {
-            return $this->_role;
+            // return $this->_role;
+            $role = $this->_role;
+            $role[] = 'ROLE_USER';
+
+            return array_unique($role);
         }
 
 }

@@ -22,6 +22,7 @@
                         <thead>
                             <th>ID</th>
                             <th>Nom</th>
+                            <th>Role</th>
                             <th>Action</th>
 
                         </thead>
@@ -34,6 +35,7 @@
                                     <td><?php echo $editor->id() ?></td>
                                     <td><?php echo $editor->name()  ?></td>
                                     <!-- <td><?php echo $editor->password()  ?></td> -->
+                                    <td><?php var_dump($editor->role())   ?></td>
 
     
                                      <td><!-- <a class="btn btn-danger" href="edit.php?id=<?php echo $brands['brand_id'] ?>">Modifier</a>-->
