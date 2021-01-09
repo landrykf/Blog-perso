@@ -1,10 +1,11 @@
 <?php
 namespace App\Controllers;
 
-class MainController 
+class MainController extends Controller
 {
     public function index()
     {
-        echo "ceci est le main" ;
+        $this->template = 'home';
+        $this->render('main/index',[],'home');
     }
 }

@@ -53,7 +53,7 @@ class Model extends Db
     }
 
 
-    public function create(model $model)
+    public function create()
     {
         $champs = [];
         $inter = [];
@@ -61,7 +61,7 @@ class Model extends Db
 
         //On boucle pour éclater le taleau
 
-        foreach($model as $champ => $valeur){
+        foreach($this as $champ => $valeur){
             //INSERT INTO annonces WHERE (titre, description, date) VALUES (?, ?; ?)
             //bindValue(1, valeur)
 
@@ -86,7 +86,7 @@ class Model extends Db
     }
 
 
-    public function update(int $id,model $model)
+    public function update()
     {
         $champs = [];
         $inter = [];
@@ -94,7 +94,7 @@ class Model extends Db
 
         //On boucle pour éclater le taleau
 
-        foreach($model as $champ => $valeur){
+        foreach($this as $champ => $valeur){
             //UPDATE table SET titre = ?, description = ?, date =?) WHERE id = ?
             //bindValue(1, valeur)
 
@@ -106,7 +106,7 @@ class Model extends Db
 
         }
 
-        $valeurs[] = $id;
+        $valeurs[] = $this->id;
 
         //On transforme le tableau "champs" en une chaine de caratères
         
@@ -149,7 +149,7 @@ class Model extends Db
 
 
 
-    public function hydrate(array $donnees)
+    public function hydrate($donnees)
     {
         foreach($donnees as $key => $value){
             //On récupère le nom du setter correspondant à la clé (key)

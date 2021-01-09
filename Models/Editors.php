@@ -13,6 +13,9 @@ class Editors extends Model
         $this->table = strtolower(str_replace('Model', '', $class));
     }
 
+
+    
+
     /**
      * Get the value of id
      */ 

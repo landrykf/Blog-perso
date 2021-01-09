@@ -7,9 +7,9 @@
 </head>
 <body>
 
-    <h1>ici se trouvera l'entête</h1>
     <div class="container">
         <?php echo $contenu ?>
     </div>
+    <button>ici sera le bouton d'accueil</button>
 </body>
 </html>
