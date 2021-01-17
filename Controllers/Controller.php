@@ -27,5 +27,6 @@ abstract class Controller
 
         //template de la page
         require_once ROOT.'/Views/'.$template.'.php';
+
     }
 }

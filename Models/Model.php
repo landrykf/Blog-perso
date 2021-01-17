@@ -65,7 +65,7 @@ class Model extends Db
             //INSERT INTO annonces WHERE (titre, description, date) VALUES (?, ?; ?)
             //bindValue(1, valeur)
 
-            if($valeur !=null && $champ != 'db' && $champ != 'table'){
+            if($valeur !== null && $champ != 'db' && $champ != 'table'){
                 $champs[] = "$champ";
                 $inter[] = "?";
                 $valeurs[] = $valeur;

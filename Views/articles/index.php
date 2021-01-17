@@ -45,7 +45,7 @@
                             ?>
                                 <tr>
                                     <!-- <td><?php echo $article->id ?></td> -->
-                                    <td><a href="/articles/read/<?= $article->id?>"><?php echo $article->title?></a></td>
+                                    <td><a href="/blog-koffi/public/articles/read/<?= $article->id?>"><?php echo $article->title?></a></td>
                                     <td><?php echo $article->content ?></td>
                                     <td><?php echo $article->date ?></td>
                                     <td><?php echo $article->categorieId ?></td>

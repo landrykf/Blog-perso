@@ -1,18 +1,21 @@
 <?php
 namespace App\Controllers;
+use App\Core\Form;
 use App\Models\Articles;
+
 class ArticlesController extends Controller
 {
     public function index()
     {
         //On instancie le modèle correspondant  à la table "articles"
-        $articlesModel = new Articles;
+        $articles = new Articles;
 
         //On va chercher tout les articles
-        $articles = $articlesModel->findAll();
+        $articles = $articles->findAll();
 
         //On génère la vue
         $this->render('articles/index',['articles'=>$articles]);
+
     }
 
 
@@ -24,10 +27,10 @@ class ArticlesController extends Controller
     public function read(int $id){
         //On instancie le modeèle
 
-        $articlesModel = new Articles;
+        $articles = new Articles;
 
-        // On va chercher un article
-        $articles = $articlesModel->find($id); 
+        // On va chercher un article 
+        $articles = $articles->find($id); 
         // On envoie à la vue 
 
         $this->render('articles/read', ['articles'=>$articles]);

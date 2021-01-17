@@ -59,15 +59,18 @@ class Form
             }
 
         }
+
         return $str;
+
+
         
     }
 
-        public function startForm(string $methode = 'post',string $action = '#', array $attributes = []): self
+        public function startForm(string $methode = 'post', string $action = '#', array $attributes = []): self
         {
             //On crée la balise form
 
-            $this->formCode .= "<form action='$action'method='$methode";
+            $this->formCode .= "<form action='$action'method='$methode'";
 
             //On ajoute les attributs éventuels            
             $this->formCode .= $attributes ? $this->addAttributes.'>' : '>';
@@ -131,7 +134,7 @@ class Form
         public function addSelect(string $name , array $options,array $attributes = []):self
         {
             // On crée le select 
-            $this->formCode .= "<selct name'$name'";
+            $this->formCode .= "<select name'$name'";
 
             //On ajoute les attributs
             $this->formCode .= $attributes ? $this->addAttributes($attributes).'>' : '>';

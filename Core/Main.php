@@ -10,7 +10,11 @@ use App\Controllers\MainController;
 class Main 
 {
     public function start()
+
     {
+        //On démarre la session
+        session_start();
+
         //On retire le "trailing slash" eventule de lurl
 
         //On recupère l'URL
@@ -37,7 +41,6 @@ class Main
         if(isset($_GET['p']))
             $params = explode('/', $_GET['p']);
 
-
         if ($params[0] != ''){
             //On a au moins 1 paramètre
             //On récupère le nom du controleur à instancier
@@ -48,12 +51,15 @@ class Main
 
             //On instancie le controleur
             $controller = new $controller();
+
+
             //On récupère le 2ème paramètre d'url
             $action = (isset($params[0])) ? array_shift(($params)) : 'index' ;
 
             if(method_exists($controller, $action)){
                 //si il reste des paramètres on les passe à la méthode 
                 (isset($params[0])) ? $controller->$action($params) : $controller->$action();
+
             }else{
                 http_response_code(404);
                 echo "la page récherchée n'existe pas";

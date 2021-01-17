@@ -8,8 +8,9 @@
 <body>
 
     <div class="container">
-        <?php echo $contenu ?>
+        
     </div>
-    <button>ici sera le bouton d'accueil</button>
+    <h1>page d'accueil</h1>
+    <a href="/blog-koffi/public/articles"> <button>Voir la liste des articles</button></a>
 </body>
 </html>
