@@ -9,49 +9,49 @@ class UsersController extends Controller
 
     //connexion des utilisteurs
     public function login(){
-        var_dump($_SESSION);
 
 
         //On vérifie si le formulaire est complet
 
-        if(!Form::validate($_POST,['email', 'password'])){
+        if(Form::validate($_POST,['email', 'password'])){
             //le formilaire est complet
             //On vas chercher dans la base de donnéés l'utilisateur avec l'email entré
 
             $usersModel = new Users;
             $userArray = $usersModel->findOneByEmail(strip_tags($_POST['email']));
 
-            var_dump($userArray);
+            
 
             //si l'utilisateur n'existe pas
             if(!$userArray){
                 // On envoie un message de session 
-                var_dump($userArray);
+ 
                 $_SESSION['erreur'] = 'L\'adresse e-mail ou le mot de passe est incorrect';
                 header('Location: /blog-koffi/public/users/login');
                 exit;
+
             }
 
             //L'utilisateur existe
             $user = $usersModel->hydrate($userArray);
-
+    
             //On vérifie si le mot de passe entrée est correct 
             if(password_verify($_POST['password'], $user->getPassword())){
                 // Le mot de passe est bon 
                 //On crée la session
-
                 $user->setSession();
-                header('Location: /blog-koffi/public/main');
-                exit;
                 var_dump($user);
+                header('Location:/blog-koffi/public/main');
+
+                exit;
             }else{
                 //Mauvais mot de passe 
                 $_SESSION['erreur'] = 'L\'adresse e-mail et/ou le mot de passe est incorrect';
-                var_dump($user);
-
+                // var_dump($user);
                 header('Location: /blog-koffi/public/users/login');
 
                 exit;
+
             }
         }
 
